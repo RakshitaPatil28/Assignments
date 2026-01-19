@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Todo List</title>
+    <style>
+        /* Full page black background and center alignment */
+        body {
+            background:linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            position: relative;
+            width: 320px; /* total width of input + button */
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            margin: 0 auto 20px auto;
+            font-size: 16px;
+            display: block;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(92, 75, 221);
+            color: rgb(255, 249, 249);
+            font-weight: bold;
+            cursor: pointer;
+            display: block;  
+            margin: 0 auto;
+            /* position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 90px;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            background-color: white;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;*/
+        }
+
+        button:hover {
+            background-color: gray;
+            color: white;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+            width: 350px;
+        }
+
+        li {
+            background-color: #333;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li button {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+
+        li button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>My Todo List</h2>
+    <div class="input-container">
+    <input type="text" id="task" placeholder="Enter a task">
+    <button onclick="addTask()">Add</button>
+     </div>
+    <ul id="todoList"></ul>
+
+
+    <script>
+        function addTask() {
+            var taskText = document.getElementById("task").value;
+
+            if (taskText === "") {
+                alert("Please enter a task");
+                return;
+            }
+
+            var li = document.createElement("li");
+            li.innerText = taskText + " ";
+
+            var delBtn = document.createElement("button");
+            delBtn.innerText = "Delete";
+            delBtn.onclick = function () {
+                li.remove();
+            };
+
+            li.appendChild(delBtn);
+            document.getElementById("todoList").appendChild(li);
+            document.getElementById("task").value = "";
+        }
+    </script>
+
+    <script>
+        function addTask() {
+            var taskText = document.getElementById("task").value;
+
+            if (taskText === "") {
+                alert("Please enter a task");
+                return;
+            }
+
+            var li = document.createElement("li");
+            li.innerText = taskText;
+
+            document.getElementById("todoList").appendChild(li);
+            document.getElementById("task").value = "";
+        }
+    </script>
+
+    
+</body>
+</html>
